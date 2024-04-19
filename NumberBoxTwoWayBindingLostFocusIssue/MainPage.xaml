@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="NumberBoxTwoWayBindingLostFocusIssue.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:NumberBoxTwoWayBindingLostFocusIssue"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="Spacing">20</x:Double>
+    </Page.Resources>
+
+    <Grid
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ColumnDefinitions="*,*"
+        ColumnSpacing="{StaticResource Spacing}">
+        <StackPanel
+            Grid.Column="0"
+            Spacing="{StaticResource Spacing}">
+            <TextBlock
+                Style="{StaticResource SubheaderTextBlockStyle}"
+                Text="x:Bind" />
+            <TextBlock
+                Text="'x:Bind' changes the value when the focus is lost as expected."
+                TextWrapping="WrapWholeWords" />
+            <NumberBox Value="{x:Bind ViewModel.DoubleValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+            <CheckBox IsChecked="{x:Bind ViewModel.BoolValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Column="1"
+            Spacing="{StaticResource Spacing}">
+            <TextBlock
+                Style="{StaticResource SubheaderTextBlockStyle}"
+                Text="Binding" />
+            <TextBlock
+                Text="'Binding' changes the value immediately before the focus is lost."
+                TextWrapping="WrapWholeWords" />
+            <NumberBox Value="{Binding DoubleValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+            <CheckBox IsChecked="{Binding BoolValue, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+        </StackPanel>
+    </Grid>
+
+</Page>

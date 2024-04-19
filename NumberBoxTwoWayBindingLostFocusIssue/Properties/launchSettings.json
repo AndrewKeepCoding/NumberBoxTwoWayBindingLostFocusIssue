@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NumberBoxTwoWayBindingLostFocusIssue (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "NumberBoxTwoWayBindingLostFocusIssue (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
